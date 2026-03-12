@@ -23,6 +23,40 @@
     <button id="colorBtn">Zmeň farbu pozadia</button>
 
     <script>
+        var userName = "Jano" ;function showMessage () {username = "Ivan"; 
+        var message = "Ahoj, ja som " + userName;
+            alert ( message ) ;
+            }
+            showMessage ();
+            Alert ( userName ); 
+        var yearse = prompt ( "Koľko máte rokov?" , 100) ;
+            alert ( "Máte " + yearse + " rokov! " ) 
+        const isAdmin = confirm ( "Ste administrátor?" ) ;
+        if (isAdmin) {
+            alert("Vitajte, administrátor!");
+        } else {
+            alert("Vitajte, návštevník!");
+        }
+        var year = prompt ( "V akom roku vznikla akadémia ITSTEP" , " " ) ;
+        if (year != 2011) alert ( "Je to nesprávne!" ) ;
+        else alert ( "Správne!" ) ;
+        var messagea ;
+            messagea = "Vitajte na mojej webovej stránke!" ;
+            alert ( messagea ) ;
+        alert("Ahoj! Klikni na tlačidlo a zmeň farbu pozadia!");
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // 1. Výber elementov z DOM
         const tlacidlo = document.getElementById('colorBtn');
         
@@ -33,7 +67,7 @@
         tlacidlo.addEventListener('click', function() {
             // Výber náhodného indexu z poľa
             const nahodnyIndex = Math.floor(Math.random() * farby.length);
-            
+            alert("Zmenili ste farbu pozadia na: " + farby[nahodnyIndex]);
             // Zmena štýlu pozadia body
             document.body.style.backgroundColor = farby[nahodnyIndex];
         });
