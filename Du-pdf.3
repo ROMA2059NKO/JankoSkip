@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript DU03 - Kalkulačka pokút</title>
+</head>
+<body>
+
+    <script>
+        
+        var speed = prompt("Zadaj nameranú rýchlosť v km/h:");
+        var over = Number(speed) - 50;
+        var fine = "";
+
+        
+        if (over <= 0) {
+            fine = "Jazdíte predpisovo. Šťastnú cestu!";
+        } else if (over <= 6) {
+            fine = "Napomenutie";
+        } else if (over <= 10) {
+            fine = "20 €";
+        } else if (over <= 15) {
+            fine = "40 €";
+        } else if (over <= 19) {
+            fine = "60 €";
+        } else if (over <= 25) {
+            fine = "90 €";
+        } else if (over <= 30) {
+            fine = "140 €";
+        } else if (over <= 35) {
+            fine = "200 €";
+        } else if (over <= 40) {
+            fine = "280 €";
+        } else if (over <= 45) {
+            fine = "360 €";
+        } else if (over <= 50) {
+            fine = "440 €";
+        } else if (over <= 55) {
+            fine = "540 €";
+        } else if (over <= 60) {
+            fine = "650 €";
+        } else {
+            fine = "DI (Dopravný inšpektorát - predvolanie)";
+        }
+
+
+       
+        alert("Prekročenie o: " + (over > 0 ? over : 0) + " km/h\nPokuta: " + fine);
+    </script>
+
+</body>
+</html>
