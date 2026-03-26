@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Kalkulačka</title>
+</head>
+<body>
+
+    <h1>Kalkulačka</h1>
+
+    zadaj prvé číslo: <input type="text" id="vstup1">
+    <br><br>
+    zadaj druhé číslo: <input type="text" id="vstup2">
+    <br><br>
+
+    <button onclick="plus()">Spočítaj</button>
+    <button onclick="minus()">Odpočítaj</button>
+    <button onclick="krat()">Vynásob</button>
+    <button onclick="deleno()">Vydeľ</button>
+
+    
+    <p style="font-size: 30px;">
+        Výsledok je: <span id="odpoved" style="color: red; text-decoration: underline;">0</span>
+    </p>
+
+    <script>
+        function plus() {
+            var a = document.getElementById("vstup1").value;
+            var b = document.getElementById("vstup2").value;
+            var vysledok = Number(a) + Number(b);
+            document.getElementById("odpoved").innerHTML = vysledok;
+        }
+
+        function minus() {
+            var a = document.getElementById("vstup1").value;
+            var b = document.getElementById("vstup2").value;
+            var vysledok = Number(a) - Number(b);
+            document.getElementById("odpoved").innerHTML = vysledok;
+        }
+
+        function krat() {
+            var a = document.getElementById("vstup1").value;
+            var b = document.getElementById("vstup2").value;
+            var vysledok = Number(a) * Number(b);
+            document.getElementById("odpoved").innerHTML = vysledok;
+        }
+
+        function deleno() {
+            var a = document.getElementById("vstup1").value;
+            var b = document.getElementById("vstup2").value;
+            var vysledok = Number(a) / Number(b);
+            document.getElementById("odpoved").innerHTML = vysledok;
+        }
+    </script>
+
+</body>
+</html>
