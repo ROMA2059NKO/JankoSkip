@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Hádaj číslo - DU07</title>
+</head>
+<body>
+
+<button id="button">Hadnka</button>
+    <script>
+        
+        const button = document.getElementById("button")
+
+        function RandomNumber(){
+            var tipHraca = prompt("mislým si číslo od 1 do 10 Uhádneš ktoré?");
+
+        let mysleneCislo = Math.floor(Math.random() * 10) + 1;
+
+        if (Number(tipHraca) === mysleneCislo) {
+            alert("Uhádol si");
+        } else {
+            alert("Neuhádol si. Myslel som si číslo " + mysleneCislo);
+        }
+        }
+
+        button.addEventListener("click", RandomNumber)
+
+    </script>
+    
+
+</body>
+</html>
