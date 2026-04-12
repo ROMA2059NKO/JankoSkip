@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Menič farieb</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #slides {
+            position: relative;
+            height: 150px;
+            width: 300px;
+            margin: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .showing {
+            opacity: 1;
+        }
+
+        .slide:nth-child(1) { background: red; }
+        .slide:nth-child(2) { background: orange; }
+        .slide:nth-child(3) { background: green; }
+        .slide:nth-child(4) { background: blue; }
+
+    </style>
+</head>
+<body>
+
+<button id="colorBtn">Change Color</button>
+
+<input id="userText" type="text" placeholder="Write something">
+<button onclick="zobrazText()">Show</button>
+<p id="vystup"></p>
+
+<ul id="slides">
+    <li class="slide showing">Slide 1</li>
+    <li class="slide">Slide 2</li>
+    <li class="slide">Slide 3</li>
+    <li class="slide">Slide 4</li>
+</ul>
+
+<button id="previous">Previous</button>
+<button id="next">Next</button>
+<button id="pause">Pause</button>
+
+<script>
+
+//pfd 1,2,3
+const userName = "Romo";
+alert("Ahoj, ja som " + userName);
+
+const yearse = prompt("Koľko máte rokov?", 67);
+
+const isAdmin = confirm("Ste administrátor?");
+if (isAdmin) {
+    alert("Vitajte, administrátor!");
+} else {
+    alert("Vitajte, návštevník!");
+}
+
+const year = prompt("V akom roku vznikla akadémia ITSTEP", "");
+if (year != 2011) alert("Je to nesprávne!");
+else alert("Správne!");
+
+var stranka = "Vitajte na mojej webovej stránke!";
+alert(stranka);
+
+alert("Ahoj! Klikni na tlačidlo a zmeň farbu pozadia!");
+
+// menic farby
+const button = document.getElementById('colorBtn');
+const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF'];
+
+button.addEventListener('click', function() {
+    const i = Math.floor(Math.random() * colors.length);
+    document.body.style.backgroundColor = colors[i];
+});
+
+
+function zobrazText() {
+    const text = document.getElementById("userText").value;
+    document.getElementById("vystup").innerHTML = text;
+}
+
+// slidy
+let slides = document.querySelectorAll('#slides .slide');
+let currentSlide = 0;
+
+function goToSlide(n) {
+    slides[currentSlide].className = 'slide';
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].className = 'slide showing';
+}
+
+function nextSlide() {
+    goToSlide(currentSlide + 1);
+}
+
+function previousSlide() {
+    goToSlide(currentSlide - 1);
+}
+
+//slidy cas 
+let slideInterval = setInterval(nextSlide, 2000);
+
+// sliby controls
+let playing = true;
+const pauseButton = document.getElementById('pause');
+
+function pauseSlideshow() {
+    pauseButton.innerHTML = 'Play';
+    playing = false;
+    clearInterval(slideInterval);
+}
+
+function playSlideshow() {
+    pauseButton.innerHTML = 'Pause';
+    playing = true;
+    slideInterval = setInterval(nextSlide, 2000);
+}
+
+pauseButton.onclick = function() {
+    playing ? pauseSlideshow() : playSlideshow();
+};
+
+
+document.getElementById('next').onclick = function() {
+    pauseSlideshow();
+    nextSlide();
+};
+
+document.getElementById('previous').onclick = function() {
+    pauseSlideshow();
+    previousSlide();
+};
+
+
+
+//lize tatko lize mamka lize brat lize sestra lize dedko lize babka lize stryko lize teta lize sused lize kamarat lize kolega lize ucitel lize doktor lize policajt lize hasic lize vojaci lize sportovec lize hudobnik lize herec lize spisovatel lize malir lize programator lize vedec lize podnikatel lize politik lize prezident lize kral lize kralična lize princ lize princezna lize rytier lize pirat lize kosmonaut lize astronaut lize cestovatel lize dobrodruh lize vynalezca
+
+
+</script>
+
+</body>
+</html>
