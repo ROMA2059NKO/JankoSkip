@@ -1,42 +1,94 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Super Video Player - DU06</title>
-    <style>
-       
-        button {
-            width: 64px;
-            height: 64px;
-            padding: 0;
-            margin: 5px;
-            cursor: pointer;
-        }
-        
-        button img {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
+  <title>Prevod mien</title>
 </head>
 <body>
 
-    <h1>Super Video Player</h1>
+  <h2>Prevod mien</h2>
 
-    
-    <button><img src="images_du6/play-button.png" alt="Play"></button>
-    <button><img src="images_du6/stop-button.png" alt="Stop"></button>
-    <button><img src="images_du6/pause.png" alt="Pause"></button>
-    
-    <br>
+  <p>Suma:</p>
+  <input type="number" id="amount">
 
-    <button><img src="images_du6/zoom-in.png" alt="Zväčšiť"></button>
-    <button><img src="images_du6/zoom-out.png" alt="Zmenšiť"></button>
-    
-    <br>
+  <p>Z akej meny:</p>
+  <select id="from">
+    <option>EUR</option>
+    <option>CZK</option>
+    <option>USD</option>
+    <option>GBP</option>
+    <option>JPY</option>
+    <option>CHF</option>
+    <option>AUD</option>
+    <option>CAD</option>
+    <option>CNY</option>
+    <option>SEK</option>
+    <option>NZD</option>
+    <option>PLN</option>
+    <option>HUF</option>
+    <option>TRY</option>
+    <option>INR</option>
+    <option>BRL</option>
+    <option>ZAR</option>
+    <option>MXN</option>
+    <option>SGD</option>
+    <option>HKD</option>
+  </select>
 
-    <button><img src="images_du6/rotate-left.png" alt="Rotácia vľavo"></button>
-    <button><img src="images_du6/rotate-right.png" alt="Rotácia vpravo"></button>
+  <p>Na akú menu:</p>
+  <select id="to">
+   <option>EUR</option>
+    <option>CZK</option>
+    <option>USD</option>
+    <option>GBP</option>
+    <option>JPY</option>
+    <option>CHF</option>
+    <option>AUD</option>
+    <option>CAD</option>
+    <option>CNY</option>
+    <option>SEK</option>
+    <option>NZD</option>
+    <option>PLN</option>
+    <option>HUF</option>
+    <option>TRY</option>
+    <option>INR</option>
+    <option>BRL</option>
+    <option>ZAR</option>
+    <option>MXN</option>
+    <option>SGD</option>
+    <option>HKD</option>
+  </select>
+
+  <br><br>
+
+  <button onclick="convert()">Preveď</button>
+
+  <p id="result"></p>
+
+  <script>
+    function convert() {
+      var amount = document.getElementById("amount").value;
+      var from = document.getElementById("from").value;
+      var to = document.getElementById("to").value;
+
+      if (amount == "") {
+        alert("Zadaj sumu");
+        return;
+      }
+
+      fetch("https://api.exchangerate-api.com/v4/latest/" + from)
+        .then(response => response.json())
+        .then(data => {
+          var rate = data.rates[to];
+          var result = amount * rate;
+
+          document.getElementById("result").innerHTML =
+            amount + " " + from + " = " + result.toFixed(2) + " " + to;
+        })
+        .catch(error => {
+          document.getElementById("result").innerHTML = "Chyba";
+        });
+    }
+  </script>
 
 </body>
 </html>
